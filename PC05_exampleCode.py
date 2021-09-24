@@ -9,18 +9,18 @@ A generative art piece that uses 5 turtles to make random walk patterns in
 different colors. One turtle draws a wiggly spiral in the middle of the 
 screen. 
 """
-from turtle import *
-import math, random
+import turtle
+importmath, random
 
 # create palette
 COLORS = ['aquamarine','pink','white','orange','yellow']
 
 # create screen, and set size
-panel = Screen()
+panel =turtle.Screen()
 w = 500
 h = 500
 panel.setup(width=w,height=h)
-tracer(0) # turn off the animation or it will take forEVER
+turtle.tracer(0) # turn off the animation or it will take forEVER
 
 # set background color
 panel.bgcolor('purple')
@@ -30,11 +30,11 @@ step = 2  # amount of straightness in paths
 
 
 # create turtles
-turtle1 = Turtle(visible=False)
-turtle2 = Turtle(visible=False)
-turtle3 = Turtle(visible=False)
-turtle4 = Turtle(visible=False)
-spiral = Turtle(visible=False)
+turtle1 = turtle.Turtle(visible=False)
+turtle2 = turtle.Turtle(visible=False)
+turtle3 = turtle.Turtle(visible=False)
+turtle4 = turtle.Turtle(visible=False)
+spiral = turtle.Turtle(visible=False)
 # assign colors
 turtle1.color(COLORS[0])
 turtle2.color(COLORS[1])
@@ -57,7 +57,7 @@ rot = 90  # amount of bend in paths
 X = random.randint(w/2-100,w/2)
 Y = random.randint(w/2-100,w/2)
 turtle1.goto(X,Y)
-turtle1.seth(turtle1.towards(0,0))
+turtle1.seth(turtle1.towards(0,0)) # set heading to look at origin
 # place randomly around edge screen
 X = random.randint(-w/2,-w/2+100)
 Y = random.randint(-w/2,-w/2+100)
@@ -83,8 +83,8 @@ spiral.pendown()
 
 # walk forward (iterate 10000 times or use a while loop) with random turns
 for i in range(2):
-    spiral = Turtle()
-    forward(step) # move each turtle forward
+    spiral = turtle.Turtle()
+    turtle.forward(step) # move each turtle forward
     turtle1.left(random.randint(-rot,rot))
     turtle2.forward(step)
     turtle2.left(random.randint(-rot,rot))
@@ -98,4 +98,4 @@ for i in range(2):
     spiral.left(rot)
 
 
-done()
+turtle.done()
